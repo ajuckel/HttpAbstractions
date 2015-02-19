@@ -6,9 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Http.Infrastructure;
 using Microsoft.AspNet.Http.Security;
 using Microsoft.AspNet.FeatureModel;
@@ -113,6 +110,11 @@ namespace Microsoft.AspNet.Http.Core
         public override void OnSendingHeaders(Action<object> callback, object state)
         {
             HttpResponseFeature.OnSendingHeaders(callback, state);
+        }
+
+        public override void OnResponseCompleted(Action<object> callback, object state)
+        {
+            HttpResponseFeature.OnResponseCompleted(callback, state);
         }
 
         public override void Redirect(string location, bool permanent)

@@ -155,6 +155,16 @@ namespace Microsoft.AspNet.Owin
             register(callback, state);
         }
 
+        void IHttpResponseFeature.OnResponseCompleted(Action<object> callback, object state)
+        {
+            var register = Prop<Action<Action<object>, object>>(OwinConstants.CommonKeys.OnResponseCompleted);
+            if (register == null)
+            {
+                throw new NotSupportedException(OwinConstants.CommonKeys.OnResponseCompleted);
+            }
+            register(callback, state);
+        }
+
         IPAddress IHttpConnectionFeature.RemoteIpAddress
         {
             get { return IPAddress.Parse(Prop<string>(OwinConstants.CommonKeys.RemoteIpAddress)); }
