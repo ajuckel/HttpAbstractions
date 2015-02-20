@@ -62,6 +62,8 @@ namespace Microsoft.AspNet.Owin
                 { OwinConstants.ResponseHeaders, new FeatureMap<IHttpResponseFeature>(feature => feature.Headers, (feature, value) => feature.Headers = (IDictionary<string, string[]>)value) },
                 { OwinConstants.ResponseBody, new FeatureMap<IHttpResponseFeature>(feature => feature.Body, () => Stream.Null, (feature, value) => feature.Body = (Stream)value) },
                 { OwinConstants.CommonKeys.OnSendingHeaders, new FeatureMap<IHttpResponseFeature>(feature => new Action<Action<object>, object>(feature.OnSendingHeaders)) },
+                {OwinConstants.CommonKeys.OnResponseCompleted, new FeatureMap<IHttpResponseFeature>(feature => new Action<Action<object>, object>
+                  (feature.OnResponseCompleted)) },
 
                 { OwinConstants.CommonKeys.LocalPort, new FeatureMap<IHttpConnectionFeature>(feature => feature.LocalPort.ToString(CultureInfo.InvariantCulture),
                     (feature, value) => feature.LocalPort = Convert.ToInt32(value, CultureInfo.InvariantCulture)) },
