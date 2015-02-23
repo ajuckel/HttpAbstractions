@@ -70,7 +70,6 @@ namespace Microsoft.AspNet.Owin
             public const string AppName = "host.AppName";
             public const string Capabilities = "server.Capabilities";
             public const string OnSendingHeaders = "server.OnSendingHeaders";
-            public const string OnResponseCompleted = "server.OnResponseCompleted";
             public const string OnAppDisposing = "host.OnAppDisposing";
             public const string Scheme = "scheme";
             public const string Host = "host";
